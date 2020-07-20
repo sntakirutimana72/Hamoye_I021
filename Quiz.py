@@ -16,11 +16,11 @@ fuel_data = pd.read_csv(data_stream)
 
 # QUESTION 1
 #* Give data A and B
-A = []
-B = []
-AB_union = A.extend(B)
+A = [1, 2, 3, 4, 5, 6]
+B = [13, 21, 34]
+A.extend(B)
 #* testing
-assert AB_union == (A + B)
+assert A == [1, 2, 3, 4, 5, 6, 13, 21, 34]
 
 
 # QUESTION 2
