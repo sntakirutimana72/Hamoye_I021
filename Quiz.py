@@ -2,7 +2,7 @@ import io
 import requests
 import numpy as np
 import pandas as pd
-import seaborn as sbn
+import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.stats import kurtosis, skew
 
@@ -15,16 +15,14 @@ data_stream = io.BytesIO(res.content)
 fuel_data = pd.read_csv(data_stream)
 
 # QUESTION 1
-#* Give data A and B
 A = [1, 2, 3, 4, 5, 6]
 B = [13, 21, 34]
 A.extend(B)
-#* testing
-assert A == [1, 2, 3, 4, 5, 6, 13, 21, 34]
 
 
 # QUESTION 2
-indentity_array = np.indentity(3)
+identity_array = np.identity(3)
+print(identity_array)
 
 
 # QUESTION 3
@@ -42,6 +40,7 @@ fuel_data[['fuel_mmbtu_per_unit']].describe()
 fuel_burned = fuel_data[['fuel_qty_burned']]
 skewness = skew(fuel_burned)
 kurtosisness = kurtosis(fuel_burned)
+print(skewness, kurtosisness)
 
 
 # QUESTION 6
