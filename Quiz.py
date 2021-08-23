@@ -1,5 +1,3 @@
-import io
-import requests
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -9,10 +7,9 @@ from scipy.stats import kurtosis, skew
 plt.figure(figsize=(12, 5))
 plt.xticks(rotation=90)
 
-# FUEL DATA RETRIEVAL
-res = requests.get('https://raw.githubusercontent.com/WalePhenomenon/climate_change/master/fuel_ferc1.csv')
-data_stream = io.BytesIO(res.content)
-fuel_data = pd.read_csv(data_stream)
+# Fetching dataset
+data_url = 'https://bit.ly/HDSC-StageOneDataset'
+fuel_data = pd.read_csv(data_url, error_bad_lines=False)
 
 # QUESTION 1
 A = [1, 2, 3, 4, 5, 6]
@@ -21,8 +18,8 @@ A.extend(B)
 
 
 # QUESTION 2
-identity_array = np.identity(3)
-print(identity_array)
+identity_array_1 = np.identity(3)
+identity_array_2 = np.eye(3)
 
 
 # QUESTION 3
@@ -44,18 +41,14 @@ print(skewness, kurtosisness)
 
 
 # QUESTION 6
-fuel_data.isnull().sum()
-fuel_data.isnull().sum() * 100 / len(fuel_data)
-
-
-# QUESTION 7
-
-
-# QUESTION 8
+fuel_data.isnull().sum()  # To describe total
+fuel_data.isnull().sum() * 100 / len(fuel_data)  # To describe percentage
 
 
 # QUESTION 9
-sns.barplot(data=fuel_data, x='report_year', y='fuel_cost_per_unit_burned')
+(fuel_data.groupby(['fuel_type_code_pudl', 'report_year'])['fuel_cost_per_unit_burned']).sum()
+percentage_var = (11902.597 * 100 / 14984.572) - 100
+print(percentage_var)
 
 
 # QUESTION 10
