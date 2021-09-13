@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-data_url = 'http://bit.ly/HDSC-Regression-Dataset'
-df = pd.read_csv(dataset_url, error_bad_lines=False)
+data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00374/energydata_complete.csv'
+df = pd.read_csv(data_url, error_bad_lines=False)
 
 column_names = {'T1': 'Temperature in kitchen area',
                 'RH_1': 'Humidity in kitchen area',
